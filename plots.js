@@ -27,6 +27,12 @@ function buildMetadata(sample) {
       var PANEL = d3.select("#sample-metadata");
   
       PANEL.html("");
-      PANEL.append("h6").text(result.id);
+      PANEL.append("h6").text("id : " + result.id);
+      PANEL.append("h6").text("ethnicity : " + result.ethnicity);
+      PANEL.append("h6").text("gender : " + result.gender);
+      PANEL.append("h6").text("age : " + result.age);
+      PANEL.append("h6").text("location : " + result.location);
+      PANEL.append("h6").text("bbtype : " + result.bbtype);
+      PANEL.append("h6").text("wfreq : " + result.wfreq);
     });
   }
