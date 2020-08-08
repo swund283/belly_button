@@ -1,3 +1,14 @@
+d3.selectAll("body").on("change", updatePage);
+
+function updatePage() {
+  var dropdownMenu = d3.selectAll("#selectOption").node();
+  var dropdownMenuID = dropdownMenu.id;
+  var selectedOption = dropdownMenu.value;
+
+  console.log(dropdownMenuID);
+  console.log(selectedOption);
+};
+
 function init() {
     var selector = d3.select("#selDataset");
   
@@ -35,4 +46,30 @@ function buildMetadata(sample) {
       PANEL.append("h6").text("bbtype : " + result.bbtype);
       PANEL.append("h6").text("wfreq : " + result.wfreq);
     });
+
   }
+
+  function buildCharts(sample) {
+    d3.json("samples.json").then((data) => {
+      var samples = data.samples;
+      var resultingArray = samples.filter(sampleObj => sampleObj.id == sample);
+      var results = resultingArray[0];
+      var TopTenValues = results.sample_values.slice(0,10);
+      var TopTenName = results.otu_ids.slice(0,10);
+      console.log(TopTenName);
+      console.log(TopTenValues);
+    });
+  }
+
+  var trace = {
+    x: [TopTenName],
+    y: [TopTenValues],
+    type: "bar"
+   };
+   var data = [trace];
+   var layout = {
+    title: "'Bar' Chart",
+    xaxis: { title: "Names"},
+    yaxis: { title: "Values"}
+   };
+   Plotly.newPlot("bar", data, layout);
