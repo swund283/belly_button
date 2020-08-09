@@ -53,7 +53,7 @@ function init() {
       var sample_values = results.sample_values;
       var otu_labels = results.otu_labels;
       var TopTenValues = results.sample_values.slice(0,10).reverse();
-      var TopTenName = results.otu_ids.slice(0,10); 
+      var TopTenName = results.otu_ids.slice(0,10).reverse(); 
       var TopTenNames = TopTenName.map(i => "UTO " + i );
       var metadata = data.metadata;
       var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
