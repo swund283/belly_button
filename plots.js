@@ -52,12 +52,14 @@ function init() {
       var otu_ids = results.otu_ids;
       var sample_values = results.sample_values;
       var otu_labels = results.otu_labels;
-      var TopTenValues = results.sample_values.slice(0,10);
-      var TopTenName = results.otu_ids.slice(0,10);      
+      var TopTenValues = results.sample_values.slice(0,10).reverse();
+      var TopTenName = results.otu_ids.slice(0,10); 
+      var TopTenNames = TopTenName.map(i => "UTO " + i );
       var metadata = data.metadata;
       var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
       var result = resultArray[0];
       var freq = result.wfreq
+      console.log(TopTenNames)
 
 
 //bar
@@ -141,6 +143,3 @@ function optionChanged(newSample) {
   buildMetadata(newSample);
   buildCharts(newSample);
 }
-
-
- 
