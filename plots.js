@@ -76,7 +76,7 @@ function init() {
        var data = [trace];
 
        var layout = {
-        title: "'Bar' Chart",
+        title: "Top 10 Bacterial Species",
         xaxis:{
           title: "Values"
       },
@@ -130,7 +130,6 @@ function init() {
       var data = [trace1];
       
       var layout = {
-        title: 'Bubble Chart Hover Text',
         showlegend: false,
         height: 600,
         width: 1300
