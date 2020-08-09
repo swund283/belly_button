@@ -59,15 +59,17 @@ function init() {
       var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
       var result = resultArray[0];
       var freq = result.wfreq
-      console.log(TopTenNames)
+
 
 
 //bar
       var trace = {
         x: TopTenValues,
+        y: TopTenNames,
         orientation: 'h',
         type: "bar",
         mode: 'markers',
+        text: TopTenNames.map(String),
         text: otu_labels
        };
 
