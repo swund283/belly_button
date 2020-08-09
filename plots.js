@@ -64,7 +64,9 @@ function init() {
       var trace = {
         x: TopTenValues,
         orientation: 'h',
-        type: "bar"
+        type: "bar",
+        mode: 'markers',
+        text: otu_labels
        };
 
        var data = [trace];
@@ -72,13 +74,10 @@ function init() {
        var layout = {
         title: "'Bar' Chart",
         xaxis:{
-          title: "Values",
-          lables: otu_ids
+          title: "Values"
       },
       yaxis:{
-        title: "Names",
-        autorange: 'reverse',
-        side:'left'
+        title: "Names"
       } 
        };
        Plotly.newPlot("bar", data, layout);
@@ -90,20 +89,20 @@ function init() {
           value: freq,
           title: { text: "Belly Button Washing Frequency" },
           type: "indicator",
-          mode: "gauge+number+delta",
+          mode: "gauge+number",
           gauge: {
             axis: { range: [null, 10] },
             steps: [
               { range: [0, 1], color: "lightgray" },
-              { range: [1, 2], color: "gray" },
-              { range: [2, 3], color: "lightyellow" },
-              { range: [3, 4], color: "yellow" },
-              { range: [4, 5], color: "lightgreen" },
-              { range: [5 , 6], color: "green" },
-              { range: [6, 7], color: "lightgreen" },
-              { range: [7, 8], color: "lightgreen" },
-              { range: [8, 9], color: "lightgreen" },
-              { range: [9, 10], color: "lightgreen" }
+              { range: [1, 2], color: "silver" },
+              { range: [2, 3], color: "grey" },
+              { range: [3, 4], color: "khaki" },
+              { range: [4, 5], color: "yellow" },
+              { range: [5 , 6], color: "gold" },
+              { range: [6, 7], color: "greenyellow" },
+              { range: [7, 8], color: "springgreen" },
+              { range: [8, 9], color: "lime" },
+              { range: [9, 10], color: "green" }
             ],
           }
         }
