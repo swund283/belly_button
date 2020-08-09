@@ -10,7 +10,7 @@ function updatePage() {
 };
 
 function init() {
-    var selector = d3.select("#selDataset");
+  var selector = d3.select("#selDataset");
   
     d3.json("samples.json").then((data) => {
       console.log(data);
@@ -25,12 +25,7 @@ function init() {
   
   init();
 
-function optionChanged(newSample) {
-    buildMetadata(newSample);
-    buildCharts(newSample);
-}
-
-function buildMetadata(sample) {
+  function buildMetadata(sample) {
     d3.json("samples.json").then((data) => {
       var metadata = data.metadata;
       var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
@@ -63,14 +58,11 @@ function buildMetadata(sample) {
       var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
       var result = resultArray[0];
       var freq = result.wfreq
-      console.log(otu_ids)
-      console.log(sample_values)
-      console.log(otu_labels)
+
 
 //bar
       var trace = {
         x: TopTenValues,
-        y: TopTenName,
         orientation: 'h',
         type: "bar"
        };
@@ -79,8 +71,15 @@ function buildMetadata(sample) {
 
        var layout = {
         title: "'Bar' Chart",
-        xaxis: { title: "Names"},
-        yaxis: { title: "Values"}
+        xaxis:{
+          title: "Values",
+          lables: otu_ids
+      },
+      yaxis:{
+        title: "Names",
+        autorange: 'reverse',
+        side:'left'
+      } 
        };
        Plotly.newPlot("bar", data, layout);
 
@@ -89,20 +88,23 @@ function buildMetadata(sample) {
         {
           domain: { x: [0, 1], y: [0, 1] },
           value: freq,
-          title: { text: "Speed" },
+          title: { text: "Belly Button Washing Frequency" },
           type: "indicator",
           mode: "gauge+number+delta",
           gauge: {
-            axis: { range: [null, 25] },
+            axis: { range: [null, 10] },
             steps: [
               { range: [0, 1], color: "lightgray" },
-              { range: [2,5], color: "gray" }
+              { range: [1, 2], color: "gray" },
+              { range: [2, 3], color: "lightyellow" },
+              { range: [3, 4], color: "yellow" },
+              { range: [4, 5], color: "lightgreen" },
+              { range: [5 , 6], color: "green" },
+              { range: [6, 7], color: "lightgreen" },
+              { range: [7, 8], color: "lightgreen" },
+              { range: [8, 9], color: "lightgreen" },
+              { range: [9, 10], color: "lightgreen" }
             ],
-            threshold: {
-              line: { color: "red", width: 4 },
-              thickness: 0.75,
-              value: 490
-            }
           }
         }
       ];
@@ -135,5 +137,11 @@ function buildMetadata(sample) {
 
     });
   }
+
+function optionChanged(newSample) {
+  buildMetadata(newSample);
+  buildCharts(newSample);
+}
+
 
  
